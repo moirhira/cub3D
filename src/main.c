@@ -58,6 +58,14 @@ int main(int ac, char **av)
 		return (printf("Error\nUsage: ./cub3D path/<filename>\n"), 1);
     if (!init_game(&game, av[1]))
         return (close_and_free(game), 1);
+    game->mlx = mlx_init();
+    if (!game->mlx)
+      return (printf("Error\nmlx init!\n"));
+    game->win = mlx_new_window(game->mlx, 64 * game->map->height, 64 * game->map->width, "cub3D");
+    mlx_hook(game->win, 17, 0, close_and_free, game);
+    mlx_loop(game->mlx);
+    void *texture = mlx_xpm_file_to_image(game->mlx, game->tex_paths[0],NULL, NULL );
+    mlx_put_image_to_window(game->mlx, game->win, texture, 0, 0);
     close_and_free(game);
     return (0);
 }
