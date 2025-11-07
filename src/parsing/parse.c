@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:53:36 by moirhira          #+#    #+#             */
-/*   Updated: 2025/11/05 15:02:50 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/06 23:32:46 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ int parse_configurations(t_game *game, int fd, char **f_line)
 			return (1);
 		}
 		if (ft_strncmp("NO ", trimmed, 3) == 0)
+		{
 			parsed += parse_texture(get_arg(trimmed), &game->tex_paths[0]);
+		}
 		else if (ft_strncmp("SO ", trimmed, 3) == 0)
 			parsed += parse_texture(get_arg(trimmed), &game->tex_paths[1]);
 		else if (ft_strncmp("WE ", trimmed, 3) == 0)
@@ -69,7 +71,6 @@ int parse_configurations(t_game *game, int fd, char **f_line)
 	if (parsed != 6)
 		return (printf("Error\nMissing configuration element\n"), 0);
 	f_line = NULL;
-	printf("texture -> %s\n", game->tex_paths[0]);
 	return (1);
 }
 

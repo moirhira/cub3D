@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:04:41 by moirhira          #+#    #+#             */
-/*   Updated: 2025/09/22 20:04:51 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:52:29 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int parse_texture(char *path, char **dest)
 	}
 	close(fd);
 	*dest = trimmed;
-	free(trimmed);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:51 by moirhira          #+#    #+#             */
-/*   Updated: 2025/11/05 14:53:46 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/06 23:15:40 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@ void init_data(t_game *game)
   game->map->height = 0;
   game->player.pos_x = 0;
   game->player.pos_y = 0;
-  game->move_speed = 0.05;
-  game->rot_speed = 0.03;
-  game->keys.w = 0;
-  game->keys.d = 0;
-  game->keys.a = 0;
-  game->keys.s = 0;
-  game->keys.esc = 0;
-  game->keys.left_arrow = 0;
-  game->keys.right_arrow = 0;
 }
 
 int init_game(t_game **gamedata, char *file)
@@ -50,18 +41,23 @@ int init_game(t_game **gamedata, char *file)
   return (1);
 }
 
+void win_scal(t_game *game)
+{
+  game->scren_height = game->map->height * 40;
+  game->scren_width = game->map->width * 40;
+}
+
 int main(int ac, char **av)
 {
   t_game *game;
+  t_img *image;
   if (ac != 2)
     return (printf("Error\nUsage: ./cub3D path/<filename>\n"), 1);
   if (!init_game(&game, av[1]))
-    return (close_and_free(game), 1);
-  game->win_width = game->map->width * 40;
-  game->win_height = game->map->height * 40;
-  if (ft_init_randring(game->img, game) == 1)
     return (1);
-  close_and_free(game);
+  camera(game);
+  win_scal(game);
+  if (init_randring(game) == 1)
+    return 1;
   return (0);
 }
-
