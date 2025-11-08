@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:10 by moirhira          #+#    #+#             */
-/*   Updated: 2025/11/06 22:31:03 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/08 21:45:44 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 #include <math.h>
+
+// raycasting struct hepler for singel saycsat
+typedef struct s_ray_hit
+{
+    double  distance;       // Distance to the wall
+    double  wall_x;         // Where exactly on the wall the ray hit (a value from 0.0 to 1.0)
+    int     side;           // Which side of a grid cell was hit? (0 for E/W, 1 for N/S)
+}   t_ray_hit;
 
 
 typedef struct s_texture
@@ -62,12 +70,13 @@ typedef struct s_keys
     int esc;
 }   t_keys;
 
-
+// hex ??
 typedef struct s_color
 {
     int r;
     int g;
     int b;
+    char *hex_color;
 } t_color;
 
 
@@ -125,7 +134,8 @@ void win_scal(t_game *game);
 int move(t_game *game);
 void camera(t_game *game);
 int is_wall(t_game *game, double x, double y);
-double cast_ray(t_game *game, double ray_x, double ray_y);
+// double cast_ray(t_game *game, double ray_x, double ray_y);
+t_ray_hit cast_ray(t_game *game, double ray_x, double ray_y);
 void put_pixel(int x, int y, t_img *img, int color);
 int mini_map(t_game *game, t_img *img);
 int handle_key(int key, void *param);
