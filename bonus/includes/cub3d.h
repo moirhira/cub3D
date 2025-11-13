@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:10 by moirhira          #+#    #+#             */
-/*   Updated: 2025/11/08 22:22:32 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/13 22:05:36 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,14 @@ typedef struct s_game
     void    *win;
     int		scren_width;
 	int		scren_height;
-    char    *tex_paths[4];
+    char    *tex_paths[5];
     t_map   *map;
     t_player player;
     t_color floor_color;
     t_img    *img;
     t_color ceiling_color;
     t_keys keys;
-    t_texture textures[4];
+    t_texture textures[5];
     double move_speed;
     double rot_speed;
 }   t_game;
