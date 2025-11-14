@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 22:02:41 by moirhira          #+#    #+#             */
-/*   Updated: 2025/11/06 22:38:24 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/13 22:23:00 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int load_all_textures(t_game *game)
         int i;
 
         i = 0;
-        while (i < 4)
+        while (i < 5)
         {
                 if (!load_texture(game, i))
                 {

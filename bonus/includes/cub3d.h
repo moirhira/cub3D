@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:10 by moirhira          #+#    #+#             */
-/*   Updated: 2025/11/13 22:05:36 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/14 21:30:41 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ typedef struct s_ray_hit
     double  distance;       // Distance to the wall
     double  wall_x;         // Where exactly on the wall the ray hit (a value from 0.0 to 1.0)
     int     side;           // Which side of a grid cell was hit? (0 for E/W, 1 for N/S)
+    int map_x;
+    int map_y;
 }   t_ray_hit;
-
+//++++++++++++++++++++++++++++++++++xhange here i add map_x map_yu+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 typedef struct s_texture
 {
@@ -65,6 +67,7 @@ typedef struct s_keys
     int a;
     int s;
     int d;
+    int e;
     int left_arrow;
     int right_arrow;
     int esc;

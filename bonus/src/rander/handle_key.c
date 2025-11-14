@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 23:03:50 by mel-houa          #+#    #+#             */
-/*   Updated: 2025/11/08 14:43:43 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/13 22:46:58 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int key_press_handler(int keycode, t_game *game)
 		game->keys.a = 1;
 	else if (keycode == 'd')
 		game->keys.d = 1;
+	else if (keycode == 'e')
+		game->keys.e = 1;
 	else if (keycode == key_left)
 		game->keys.left_arrow = 1;
 	else if (keycode == key_right)
@@ -46,6 +48,8 @@ int key_release_handler(int keycode, t_game *game)
 		game->keys.a = 0;
 	else if (keycode == 'd')
 		game->keys.d = 0;
+	else if (keycode == 'e')
+		game->keys.e = 0;
 	else if (keycode == key_left)
 		game->keys.left_arrow = 0;
 	else if (keycode == key_right)
@@ -59,6 +63,7 @@ void init_keys(t_game *game)
 	game->keys.a = 0;
 	game->keys.s = 0;
 	game->keys.d = 0;
+	game->keys.e = 0;
 	game->keys.left_arrow = 0;
 	game->keys.right_arrow = 0;
 	game->move_speed = 0.03;

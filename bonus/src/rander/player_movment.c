@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 23:07:38 by mel-houa          #+#    #+#             */
-/*   Updated: 2025/11/09 12:56:28 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/11/14 21:59:22 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int is_wall(t_game *game, double x, double y)
     new_y = (int)(y);
     if(new_x < 0 || new_y < 0 || new_y >= game->map->height || game->map->width <= new_x)
         return 1; 
-    if(game->map->map_arr[new_y][new_x] == '1')
+    if(game->map->map_arr[new_y][new_x] == '1' || game->map->map_arr[new_y][new_x] == 'D')
         return 1;
     return 0;
 }
@@ -105,11 +105,31 @@ void rotate_player(t_game *game)
 		
 	
 }
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++add this to check the open the doo +++++++++++++++++++++++++++++
+void open_door(t_game *game)
+{
+	if (game->keys.e == 1)
+	{
+		printf("opne door\n");
+		int check_x = (int)(game->player.pos_x + game->player.dir_x * 0.8);
+		int check_y = (int)(game->player.pos_y + game->player.dir_y * 0.8);
+
+		char tile = game->map->map_arr[check_y][check_x];
+
+		if (tile == 'D')
+			game->map->map_arr[check_y][check_x] = 'O';
+		else if (tile == 'O')
+        		game->map->map_arr[check_y][check_x] = 'D';
+	}	
+}
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 int game_update(t_game *game)
 {
 	move_player(game);
 	rotate_player(game);
+	open_door(game);
 	draw(game, game->img);
 	return (0);
 }
