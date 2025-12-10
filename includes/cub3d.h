@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:10 by moirhira          #+#    #+#             */
-/*   Updated: 2025/11/08 22:22:32 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/10 16:09:18 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ typedef struct s_ray_hit
 {
     double  distance;       // Distance to the wall
     double  wall_x;         // Where exactly on the wall the ray hit (a value from 0.0 to 1.0)
-    int     side;           // Which side of a grid cell was hit? (0 for E/W, 1 for N/S)
+    int     side;  
+    int map_x;
+    int map_y;         // Which side of a grid cell was hit? (0 for E/W, 1 for N/S)
 }   t_ray_hit;
 
 
@@ -130,17 +132,18 @@ typedef struct s_game
 
 // func of randring part
 int draw(t_game *game, t_img *img);
+void draw_ceiling_and_floor(t_game *game, t_img *img);
 void win_scal(t_game *game);
-int move(t_game *game);
 void camera(t_game *game);
 int is_wall(t_game *game, double x, double y);
+void put_pixel(int x, int y, t_img *img, int color);
 // double cast_ray(t_game *game, double ray_x, double ray_y);
 t_ray_hit cast_ray(t_game *game, double ray_x, double ray_y);
 void put_pixel(int x, int y, t_img *img, int color);
 int mini_map(t_game *game, t_img *img);
-int handle_key(int key, void *param);
-int handle_win_close(void *param);
 void draw_player(t_img *img, t_game *game, double x, double y);
+int check_player(char player);
+void	camera(t_game *game);
 
 
 int key_press_handler(int keycode, t_game *game);
@@ -152,6 +155,7 @@ int game_update(t_game *game);
 int init_randring(t_game *game);
 
 // load_textures 
+unsigned int get_texture_color(t_texture *texture, int tex_x, int tex_y);
 int load_all_textures(t_game *game);
 
 
@@ -171,6 +175,8 @@ int parse_map(t_game *game, int fd, char *first_line);
 
 //validate_map.c
 int	validate_map(t_game *game);
+// validate_map_utils.c
+int	check_map_is_closed(t_game *game);
 
 // parsing_utils.c
 int	is_dir(char *arg);

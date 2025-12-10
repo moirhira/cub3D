@@ -14,46 +14,46 @@
 
 int	is_dir(char *arg)
 {
-	int		fd;
+	int	fd;
 
 	fd = open(arg, O_DIRECTORY);
 	if (fd >= 0)
 	{
-		close (fd);
+		close(fd);
 		return (1);
 	}
 	return (0);
 }
 
-int is_all_digits(char *str)
+int	is_all_digits(char *str)
 {
-    if (!str || *str == '\0')
-        return (0);
-    while (*str == ' ' || *str == '\t')
-        str++;
-    while (*str)
-    {
-        if (*str < '0' || *str > '9')
-            return (0);
-        str++;
-    }
-    return (1);
+	if (!str || *str == '\0')
+		return (0);
+	while (*str == ' ' || *str == '\t')
+		str++;
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
+	}
+	return (1);
 }
 
-int ft_isempty(char *str)
+int	ft_isempty(char *str)
 {
-    int i;
+	int	i;
 
-    if (!str)
-        return (1);
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-            return (0);
-        i++;
-    }
-    return (1);
+	if (!str)
+		return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	is_player(char c)
@@ -61,15 +61,15 @@ int	is_player(char c)
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-int close_and_free(t_game *game)
+int	close_and_free(t_game *game)
 {
-    if (game->map->map_arr)
-        free_split(game->map->map_arr);
-    if (game->win)
-        mlx_destroy_window(game->mlx ,game->win);
-    if (game->mlx)
-        mlx_destroy_display(game->mlx);
-    free(game->map);
-    free(game);
-    exit(0);
+	if (game->map->map_arr)
+		free_split(game->map->map_arr);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+		mlx_destroy_display(game->mlx);
+	free(game->map);
+	free(game);
+	exit(0);
 }
