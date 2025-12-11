@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:56:23 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/10 16:02:17 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/10 16:47:23 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,14 @@ int	validate_border_and_interior(char **map, t_game *game, int i, int j)
 	if (i == 0 || i == game->map->height - 1 || j == 0 || j == line_len - 1)
 	{
 		if (c != '1' && c != ' ')
-			return (free_split(map), printf("Error\nMap is not enclosed by walls! at (%d,%d)\n", i, j), 0);
+			return (free_split(map),
+				printf("Error\nMap is not enclosed by walls! at (%d,%d)\n", i,
+					j), 0);
 	}
 	if (c == '0' || is_player(c))
 	{
-		if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ' || map[i][j + 1] == ' ' || map[i][j - 1] == ' ')
+		if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ' || map[i][j + 1] == ' '
+			|| map[i][j - 1] == ' ')
 			return (free_split(map), printf("Error\nMap leaked\n"), 0);
 	}
 	return (1);
@@ -62,9 +65,9 @@ int	validate_border_and_interior(char **map, t_game *game, int i, int j)
 
 int	check_map_is_closed(t_game *game)
 {
+	char	**map;
 	int		i;
 	int		j;
-	char	**map;
 
 	map = fill_map_with_spaces(game);
 	if (!map)

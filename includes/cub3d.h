@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:10 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/10 16:09:18 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:17:50 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_player
     double pos_x;
     double pos_y;
     char dir;
-
     double dir_x; 
     double dir_y;
     double plane_x;
@@ -165,6 +164,10 @@ int load_all_textures(t_game *game);
 // parse.c
 int	parse(t_game *game, char *filedata);
 
+// parse_config_utils.c
+int	process_config_line(t_game *game, char *trimmed, int *parsed);
+void	strip_newline(char *line);
+
 // parse_color_and_texture.c
 int	validate_file_extension(char *file, char *extension);
 int parse_texture(char *path, char **dest);
@@ -175,6 +178,7 @@ int parse_map(t_game *game, int fd, char *first_line);
 
 //validate_map.c
 int	validate_map(t_game *game);
+
 // validate_map_utils.c
 int	check_map_is_closed(t_game *game);
 
@@ -185,5 +189,4 @@ int ft_isempty(char *str);
 int	is_player(char c);
 int close_and_free(t_game *game);
 
-//
 #endif

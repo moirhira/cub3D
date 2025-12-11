@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:04:41 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/10 15:45:37 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/10 16:22:26 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ int	parse_texture(char *path, char **dest)
 	if (fd == -1)
 	{
 		free(trimmed);
-		printf("Error\nCannot open texture file!\n");
-		return (0);
+		return (printf("Error\nCannot open texture file!\n"), 0);
 	}
 	close(fd);
 	*dest = trimmed;
@@ -72,7 +71,8 @@ int	validate_color_values(char **str, int *colors)
 		{
 			free(trimmed);
 			free_split(str);
-			return (printf("Error\nColor value contains non-digit characters.\n"), 0);
+			return (printf("Error\nColor value contains non-digit characters.\n"),
+				0);
 		}
 		colors[i] = ft_atoi(trimmed);
 		free(trimmed);

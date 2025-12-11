@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:01:32 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/10 15:55:52 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/10 16:46:14 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,10 @@ int	check_player_count(t_game *game)
 	return (1);
 }
 
-
 int	validate_map(t_game *game)
 {
-	int i;
-	int player_count;
+	int	i;
+	int	player_count;
 
 	i = 0;
 	player_count = 0;

@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:32:37 by moirhira          #+#    #+#             */
-/*   Updated: 2025/09/23 09:33:04 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:21:46 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,39 @@ int	is_player(char c)
 
 int	close_and_free(t_game *game)
 {
-	if (game->map->map_arr)
-		free_split(game->map->map_arr);
-	if (game->win)
+	int i;
+	
+	if (!game)
+		exit(0);
+	if (game->map)
+	{
+		if (game->map->map_arr)
+			free_split(game->map->map_arr);
+		free(game->map);
+		game->map = NULL;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textures[i].img_ptr && game->mlx)
+			mlx_destroy_image(game->mlx, game->textures[i].img_ptr);
+		i++;
+	}
+	if (game->img)
+	{
+		if (game->img->img_ptr && game->mlx)
+			mlx_destroy_image(game->mlx, game->img->img_ptr);
+		free(game->img);
+		game->img = NULL;
+	}
+	if (game->win && game->mlx)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
+	{
 		mlx_destroy_display(game->mlx);
-	free(game->map);
+		free(game->mlx);
+		game->mlx = NULL;
+	}
 	free(game);
 	exit(0);
 }
