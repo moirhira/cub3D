@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:32:37 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/11 14:21:46 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/11 15:08:25 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,8 @@ int	ft_isempty(char *str)
 	return (1);
 }
 
-int	is_player(char c)
+void	free_close_helper(t_game *game)
 {
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
-}
-
-int	close_and_free(t_game *game)
-{
-	int i;
-	
-	if (!game)
-		exit(0);
-	if (game->map)
-	{
-		if (game->map->map_arr)
-			free_split(game->map->map_arr);
-		free(game->map);
-		game->map = NULL;
-	}
-	i = 0;
-	while (i < 4)
-	{
-		if (game->textures[i].img_ptr && game->mlx)
-			mlx_destroy_image(game->mlx, game->textures[i].img_ptr);
-		i++;
-	}
 	if (game->img)
 	{
 		if (game->img->img_ptr && game->mlx)
@@ -96,6 +73,31 @@ int	close_and_free(t_game *game)
 		free(game->mlx);
 		game->mlx = NULL;
 	}
+}
+
+int	close_and_free(t_game *game)
+{
+	int	i;
+
+	if (!game)
+		exit(0);
+	if (game->map)
+	{
+		if (game->map->map_arr)
+			free_split(game->map->map_arr);
+		free(game->map);
+		game->map = NULL;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textures[i].img_ptr && game->mlx)
+			mlx_destroy_image(game->mlx, game->textures[i].img_ptr);
+		if (game->tex_paths[i])
+			free(game->tex_paths[i]);
+		i++;
+	}
+	free_close_helper(game);
 	free(game);
 	exit(0);
 }

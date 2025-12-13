@@ -9,8 +9,8 @@ SRCS_PARSING = src/main.c \
 			src/parsing/parsing_utils.c\
 			src/parsing/validate_map.c\
 			src/parsing/validate_map_utils.c\
-			libraries/get_next_line/get_next_line.c\
-			libraries/get_next_line/get_next_line_utils.c\
+			libraries/get_line/get_line.c\
+			libraries/get_line/get_line_utils.c\
 
 
 SRC_RANDRING = src/rander/randring.c\
@@ -21,7 +21,6 @@ SRC_RANDRING = src/rander/randring.c\
 				src/rander/handle_key.c\
 				src/rander/load_textures.c\
 				src/rander/drwa_utils.c\
-				src/rander/mini_map_utils.c\
 				src/rander/camera_plan.c\
 
 SRCS = $(SRCS_PARSING)  $(SRC_RANDRING)

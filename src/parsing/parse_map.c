@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:06:42 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/10 17:03:52 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/11 20:57:36 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	handle_empty_map_line(t_game *game, char *line, int rows, int fd)
 	free(line);
 	if (rows > 0)
 	{
-		free_split(game->map->map_arr);
-		return (printf("Error\nEmpty line inside map definition.\n"), 0);
+		printf("Error\nEmpty line inside map definition.\n");
+		return (0);
 	}
 	return (1);
 }
@@ -70,12 +70,12 @@ int	read_map_lines(t_game *game, int fd, char *first_line)
 		{
 			if (!handle_empty_map_line(game, line, rows, fd))
 				return (0);
-			line = get_next_line(fd);
+			line = get_line(fd);
 			continue ;
 		}
 		if (!process_map_line(game, line, &rows, &max_width))
 			return (0);
-		line = get_next_line(fd);
+		line = get_line(fd);
 	}
 	game->map->height = rows;
 	game->map->width = max_width;

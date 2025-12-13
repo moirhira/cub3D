@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:04:41 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/10 16:22:26 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/12 14:07:47 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,11 @@ int	parse_color(char *path, t_color *dest)
 		return (printf("Error\nDuplicate color definition!\n"), 0);
 	str = ft_split(path, ',');
 	if (!str || ft_strlen_2d(str) != 3)
-		return (printf("Error\nInvalid color format!\n"), free_split(str), 0);
+	{
+		printf("Error\nInvalid color format!\n");
+		free_split(str);
+		return (0);
+	}
 	if (!validate_color_values(str, colors))
 		return (0);
 	free_split(str);

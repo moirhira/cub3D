@@ -6,32 +6,28 @@
 /*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:51 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/11 14:15:32 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/12 12:26:52 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_data(t_game *game)
+void	init_data_helper(t_game *game)
 {
-	/* texture paths */
 	game->tex_paths[0] = NULL;
 	game->tex_paths[1] = NULL;
 	game->tex_paths[2] = NULL;
 	game->tex_paths[3] = NULL;
-	/* colors: r = -1 signals "not set" */
 	game->ceiling_color.r = -1;
 	game->floor_color.r = -1;
 	game->ceiling_color.hex_color = 0;
 	game->floor_color.hex_color = 0;
-	/* map */
 	if (game->map)
 	{
 		game->map->map_arr = NULL;
 		game->map->width = 0;
 		game->map->height = 0;
 	}
-	/* player */
 	game->player.pos_x = 0;
 	game->player.pos_y = 0;
 	game->player.dir = '\0';
@@ -41,14 +37,14 @@ void	init_data(t_game *game)
 	game->player.plane_y = 0;
 	game->player.ray_dir_x = 0;
 	game->player.ray_dir_y = 0;
-	/* graphics / mlx */
-	game->mlx = NULL;
-	game->win = NULL;
-	game->img = NULL;
-	game->scren_width = 0;
-	game->scren_height = 0;
-	/* textures image pointers */
-	for (int i = 0; i < 4; ++i)
+}
+
+void	init_img_struct(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
 	{
 		game->textures[i].img_ptr = NULL;
 		game->textures[i].addr = NULL;
@@ -57,12 +53,28 @@ void	init_data(t_game *game)
 		game->textures[i].bits_per_pixel = 0;
 		game->textures[i].size_line = 0;
 		game->textures[i].endian = 0;
+		i++;
 	}
-	/* keys and speeds */
-	game->keys.w = game->keys.a = game->keys.s = game->keys.d = 0;
-	game->keys.left_arrow = game->keys.right_arrow = game->keys.esc = 0;
-	game->move_speed = 0.0;
-	game->rot_speed = 0.0;
+}
+
+void	init_data(t_game *game)
+{
+	init_data_helper(game);
+	game->mlx = NULL;
+	game->win = NULL;
+	game->img = NULL;
+	game->scren_width = 0;
+	game->scren_height = 0;
+	init_img_struct(game);
+	game->keys.w = 0;
+	game->keys.a = 0;
+	game->keys.s = 0;
+	game->keys.d = 0;
+	game->keys.left_arrow = 0;
+	game->keys.right_arrow = 0;
+	game->keys.esc = 0;
+	game->move_speed = 0.03;
+	game->rot_speed = 0.02;
 }
 
 int	init_game(t_game **gamedata, char *file)
@@ -79,26 +91,22 @@ int	init_game(t_game **gamedata, char *file)
 	return (1);
 }
 
-void	win_scal(t_game *game)
+int	main(int ac, char **av)
 {
+	t_game	*game;
+	t_img	*image;
+
+	if (ac != 2)
+		return (printf("Error\nUsage: ./cub3D path/<filename>\n"), 1);
+	if (!init_game(&game, av[1]))
+		return (close_and_free(game), 1);
+	camera(game);
 	game->scren_height = game->map->height * 40;
 	game->scren_width = game->map->width * 40;
 	if (game->scren_height > 1080)
 		game->scren_height = 1080;
 	if (game->scren_width > 1920)
 		game->scren_width = 1920;
-}
-
-int	main(int ac, char **av)
-{
-	t_game *game;
-	t_img *image;
-	if (ac != 2)
-		return (printf("Error\nUsage: ./cub3D path/<filename>\n"), 1);
-	if (!init_game(&game, av[1]))
-		return (close_and_free(game), 1);
-	camera(game);
-	win_scal(game);
 	if (init_randring(game) == 1)
 		return (1);
 	return (0);
