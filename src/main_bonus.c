@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:51 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 16:24:29 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 16:49:54 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	init_data(t_game *game)
 	game->keys.left_arrow = 0;
 	game->keys.right_arrow = 0;
 	game->keys.esc = 0;
-	game->move_speed = 0.05;
+	game->move_speed = 0.02;
 	game->rot_speed = 0.02;
 }
 
