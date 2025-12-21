@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:04:41 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 12:26:38 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 19:38:19 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,12 @@ int	validate_color_values(char **str, int *colors)
 		trimmed = ft_strtrim(str[i], " \t\n");
 		if (!is_all_digits(trimmed))
 		{
-			free(trimmed);
-			free_split(str);
 			return (printf("Error\nColor value contains non-digit characters.\n"),
 				0);
 		}
 		colors[i] = ft_atoi(trimmed);
-		free(trimmed);
 		if (colors[i] < 0 || colors[i] > 255)
-			return (free_split(str), printf("Error\nColor out of range\n"), 0);
+			return (printf("Error\nColor out of range\n"), 0);
 		i++;
 	}
 	return (1);
@@ -79,12 +76,10 @@ int	parse_color(char *path, t_color *dest)
 	if (!str || ft_strlen_2d(str) != 3)
 	{
 		printf("Error\nInvalid color format!\n");
-		free_split(str);
 		return (0);
 	}
 	if (!validate_color_values(str, colors))
 		return (0);
-	free_split(str);
 	dest->r = colors[0];
 	dest->g = colors[1];
 	dest->b = colors[2];

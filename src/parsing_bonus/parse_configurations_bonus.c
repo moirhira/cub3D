@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 16:40:00 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 15:34:44 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 19:42:26 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	*get_arg(char *line)
 		i++;
 	return (&line[i]);
 }
-
 
 static int	handle_texture_line(t_game *game, char *trimmed)
 {
@@ -49,7 +48,6 @@ static int	handle_color_line(t_game *game, char *trimmed)
 	return (-1);
 }
 
-
 int	process_config_line(t_game *game, char *trimmed, int *parsed)
 {
 	int	res;
@@ -62,7 +60,6 @@ int	process_config_line(t_game *game, char *trimmed, int *parsed)
 		*parsed += 1;
 		return (1);
 	}
-
 	res = handle_color_line(game, trimmed);
 	if (res == 0)
 		return (0);
@@ -78,18 +75,8 @@ int	process_config_line(t_game *game, char *trimmed, int *parsed)
 int	handle_config_line(t_game *game, char *line, char *trimmed, int *parsed)
 {
 	if (*trimmed == '\0')
-	{
-		free(trimmed);
-		free(line);
 		return (1);
-	}
 	if (!process_config_line(game, trimmed, parsed))
-	{
-		free(trimmed);
-		free(line);
 		return (0);
-	}
-	free(trimmed);
-	free(line);
 	return (1);
 }

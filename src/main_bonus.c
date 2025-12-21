@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:51 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 16:49:54 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 22:27:12 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ void	init_data(t_game *game)
 
 int	init_game(t_game **gamedata, char *file)
 {
-	*gamedata = malloc(sizeof(t_game));
+	*gamedata = ft_malloc(sizeof(t_game));
 	if (!*gamedata)
 		return (printf("Error\nmalloc\n"), 0);
-	(*gamedata)->map = malloc(sizeof(t_map));
+	(*gamedata)->map = ft_malloc(sizeof(t_map));
 	if (!(*gamedata)->map)
 		return (printf("Error\nmalloc\n"), 0);
 	init_data(*gamedata);
@@ -99,10 +99,9 @@ int	init_game(t_game **gamedata, char *file)
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	t_img	*image;
 
 	if (ac != 2)
-		return (printf("Error\nUsage: ./cub3D path/<filename>\n"), 1);
+		return (printf("Error\nUsage: ./cub3D_bonus path/<filename>\n"), 1);
 	game = NULL;
 	if (!init_game(&game, av[1]))
 		return (close_and_free(game), 1);
@@ -114,6 +113,6 @@ int	main(int ac, char **av)
 	if (game->scren_width > 1920)
 		game->scren_width = 1920;
 	if (init_randring(game) == 1)
-		return (1);
+		return (close_and_free(game), 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 14:23:49 by mel-houa          #+#    #+#             */
-/*   Updated: 2025/12/21 15:36:09 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 19:32:26 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	handel_mouse_move(int x, int y, t_game *game)
 
 int	init_image(t_game *game, t_img *img)
 {
-	game->img = malloc(sizeof(t_img));
+	game->img = ft_malloc(sizeof(t_img));
 	if (!game->img)
 		return (printf("Error\nallocation  fail!\n"), 1);
 	game->img->img_ptr = mlx_new_image(game->mlx, game->scren_width,

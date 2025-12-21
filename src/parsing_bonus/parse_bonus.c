@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:53:36 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 15:34:31 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 19:41:38 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	parse_configurations(t_game *game, int fd, char **f_line)
 			return (printf("Error\nMalloc failed\n"), 0);
 		if (parsed == 7)
 		{
-			free(trimmed);
 			*f_line = line;
 			return (1);
 		}

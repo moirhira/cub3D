@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:56:23 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 15:35:24 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 19:42:49 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,15 @@ char	**fill_map_with_spaces(t_game *game)
 	int		line_len;
 	char	**new_map;
 
-	new_map = malloc(sizeof(char *) * (game->map->height + 1));
+	new_map = ft_malloc(sizeof(char *) * (game->map->height + 1));
 	if (!new_map)
 		return (printf("Error\nMalloc failed\n"), NULL);
 	i = 0;
 	while (i < game->map->height)
 	{
-		new_map[i] = malloc((game->map->width + 1) * sizeof(char));
+		new_map[i] = ft_malloc((game->map->width + 1) * sizeof(char));
 		if (!new_map[i])
 		{
-			free_split(new_map);
 			return (printf("Error\nMalloc failed\n"), NULL);
 		}
 		line_len = ft_strlen(game->map->map_arr[i]);
@@ -56,7 +55,6 @@ int	validate_border_and_interior(char **map, t_game *game, int i, int j)
 	{
 		if (c != '1' && c != ' ')
 		{
-			free_split(map);
 			printf("Error\nMap is not enclosed by walls! at (%d,%d)\n", i, j);
 			return (0);
 		}
@@ -65,7 +63,7 @@ int	validate_border_and_interior(char **map, t_game *game, int i, int j)
 	{
 		if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ' || map[i][j + 1] == ' '
 			|| map[i][j - 1] == ' ')
-			return (free_split(map), printf("Error\nMap leaked\n"), 0);
+			return (printf("Error\nMap leaked\n"), 0);
 	}
 	return (1);
 }
@@ -91,7 +89,6 @@ int	check_map_is_closed(t_game *game)
 		}
 		i++;
 	}
-	free_split(game->map->map_arr);
 	game->map->map_arr = map;
 	return (1);
 }

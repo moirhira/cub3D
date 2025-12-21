@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:32:37 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/11 15:08:25 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 19:33:49 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	free_close_helper(t_game *game)
 	{
 		if (game->img->img_ptr && game->mlx)
 			mlx_destroy_image(game->mlx, game->img->img_ptr);
-		free(game->img);
 		game->img = NULL;
 	}
 	if (game->win && game->mlx)
@@ -81,24 +80,14 @@ int	close_and_free(t_game *game)
 
 	if (!game)
 		exit(0);
-	if (game->map)
-	{
-		if (game->map->map_arr)
-			free_split(game->map->map_arr);
-		free(game->map);
-		game->map = NULL;
-	}
 	i = 0;
 	while (i < 4)
 	{
 		if (game->textures[i].img_ptr && game->mlx)
 			mlx_destroy_image(game->mlx, game->textures[i].img_ptr);
-		if (game->tex_paths[i])
-			free(game->tex_paths[i]);
 		i++;
 	}
 	free_close_helper(game);
-	free(game);
-	free_get_line_buffer();
+	free_all_memory();
 	exit(0);
 }

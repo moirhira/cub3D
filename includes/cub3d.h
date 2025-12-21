@@ -135,8 +135,9 @@ int				load_all_textures(t_game *game);
 
 int				parse(t_game *game, char *filedata);
 int				process_config_line(t_game *game, char *trimmed, int *parsed);
-int	handle_config_line(t_game *game, char *line, char *trimmed, int *parsed);
-int	read_map_lines(t_game *game, int fd, char *first_line);
+int				handle_config_line(t_game *game, char *line, char *trimmed,
+					int *parsed);
+int				read_map_lines(t_game *game, int fd, char *first_line);
 int				validate_file_extension(char *file, char *extension);
 int				parse_texture(char *path, char **dest);
 int				parse_color(char *path, t_color *dest);
