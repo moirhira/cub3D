@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   parsing_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moirhira <moirhira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:32:37 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/11 15:08:25 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 15:35:14 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3d_bonus.h"
 
 int	is_dir(char *arg)
 {
@@ -89,7 +89,7 @@ int	close_and_free(t_game *game)
 		game->map = NULL;
 	}
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		if (game->textures[i].img_ptr && game->mlx)
 			mlx_destroy_image(game->mlx, game->textures[i].img_ptr);
@@ -99,6 +99,5 @@ int	close_and_free(t_game *game)
 	}
 	free_close_helper(game);
 	free(game);
-	free_get_line_buffer();
 	exit(0);
 }

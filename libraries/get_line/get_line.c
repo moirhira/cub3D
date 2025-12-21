@@ -98,10 +98,12 @@ char	*readfromfd(int fd, char *buffer)
 	return (buffer);
 }
 
-char	*get_line(int fd)
+
+static char *buffer = NULL;
+
+char *get_line(int fd)
 {
-	static char		*buffer;
-	char			*line;
+	char *line;
 
 	if (!find_newline(buffer, '\n'))
 	{
@@ -112,4 +114,13 @@ char	*get_line(int fd)
 	line = separate_line(buffer);
 	buffer = update_buffer(buffer);
 	return (line);
+}
+
+void free_get_line_buffer(void)
+{
+	if (buffer)
+	{
+		free(buffer);
+		buffer = NULL;
+	}
 }

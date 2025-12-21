@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:06:42 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 12:34:03 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 15:34:49 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3d_bonus.h"
 
 void	strip_newline(char *line)
 {
@@ -96,4 +96,3 @@ int	read_map_lines(t_game *game, int fd, char *first_line)
 		return (printf("Error\nMissing map!\n"), 0);
 	return (1);
 }
-

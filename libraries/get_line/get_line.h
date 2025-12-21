@@ -28,5 +28,6 @@ char	*my_strdup(char *src);
 void	ft_copy(char *dest, const char *src);
 void	ft_strcat(char *dest, const char *src);
 char	*get_line(int fd);
+void	free_get_line_buffer(void);
 
 #endif

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:53:36 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 13:56:23 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 15:34:31 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3d_bonus.h"
 
 int	parse_configurations(t_game *game, int fd, char **f_line)
 {
@@ -25,7 +25,7 @@ int	parse_configurations(t_game *game, int fd, char **f_line)
 		trimmed = ft_strtrim(line, " \n\t");
 		if (!trimmed)
 			return (printf("Error\nMalloc failed\n"), 0);
-		if (parsed == 6)
+		if (parsed == 7)
 		{
 			free(trimmed);
 			*f_line = line;
@@ -35,7 +35,7 @@ int	parse_configurations(t_game *game, int fd, char **f_line)
 			return (0);
 		line = get_line(fd);
 	}
-	if (parsed != 6)
+	if (parsed != 7)
 		return (printf("Error\nMissing configuration element\n"), 0);
 	return (1);
 }

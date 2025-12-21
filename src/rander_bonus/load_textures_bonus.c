@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_textures.c                                    :+:      :+:    :+:   */
+/*   load_textures_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 22:02:41 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 14:01:26 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 15:35:49 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3d_bonus.h"
 
 static int	load_texture(t_game *game, int index)
 {
@@ -31,7 +31,7 @@ static int	load_texture(t_game *game, int index)
 			&tex->size_line, &tex->endian);
 	if (!tex->addr)
 	{
-		printf("Error\nmlx_get_data_addr failed for texture.\n");
+		printf("Error: mlx_get_data_addr failed for texture.\n");
 		return (0);
 	}
 	return (1);
@@ -42,7 +42,7 @@ int	load_all_textures(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		if (!load_texture(game, i))
 		{
