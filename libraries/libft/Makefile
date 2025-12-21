@@ -1,25 +1,26 @@
-NAME = libft.a SRC = ft_split.c ft_strcmp.c ft_strlen_2d.c ft_strlen.c ft_itoa.c ft_strjoin.c ft_strrchr.c ft_strncmp.c ft_strtrim.c ft_atoi.c ft_strdup.c ft_memcpy.c ft_memset.c ft_malloc.c OBJ = $(SRC
-																																																		:.c =.o) CC = gcc FLAGS =
-																																																			-Wall
-																																																			- Wextra
-																																																			-
-		Werror
+NAME = libft.a
+SRC  = 	ft_split.c ft_strcmp.c ft_strlen_2d.c ft_strlen.c \
+		ft_itoa.c ft_strjoin.c ft_strrchr.c ft_strncmp.c ft_strtrim.c \
+		ft_atoi.c ft_strdup.c ft_memcpy.c ft_memset.c ft_malloc.c \
 
-				all : $(NAME)
+OBJ  = $(SRC:.c=.o)
+CC   = cc
+FLAGS = -Wall -Wextra -Werror
 
-							$(NAME)
-	: $(OBJ) libft.h ar rcs $(NAME) $(OBJ)
+all : $(NAME)
 
-			%.o : %.c $(CC) $(FLAGS) -
-		c $ <
-	-o $ @
+$(NAME): $(OBJ) libft.h
+	ar rcs $(NAME) $(OBJ)
 
-		clean : rm -
-		f $(OBJ) $(BOBJ)
+%.o: %.c
+	$(CC) $(FLAGS) -c $< -o $@
 
-			fclean : clean rm -
-						f $(NAME)
+clean : 
+	rm -f $(OBJ)
 
-							re : fclean all
+fclean: clean
+	rm -f $(NAME)
 
-									.PHONY : re fclean clean
+re : fclean all
+
+.PHONY: re fclean clean 

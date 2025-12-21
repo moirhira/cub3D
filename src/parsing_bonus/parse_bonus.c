@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:53:36 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 19:41:38 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 23:13:39 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	parse(t_game *game, char *filedata)
 		return (close(fd), 0);
 	if (f_line && f_line[0] != '1' && f_line[0] != '\n')
 	{
-		free(f_line);
 		printf("Error\nDuplicate configuration or invalid char!\n");
 		close(fd);
 		return (0);

@@ -6,12 +6,11 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:51 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 19:32:26 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/21 22:40:30 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-// #include "../includes/cub3d_bonus.h"
 
 void	init_data_helper(t_game *game)
 {
