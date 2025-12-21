@@ -42,6 +42,7 @@ SRC_RANDRING_BONUS = src/rander_bonus/draw_bonus.c\
 				src/rander_bonus/player_movment_bonus.c\
 				src/rander_bonus/player_movment_utils_bonus.c\
 				src/rander_bonus/raycasting_bonus.c\
+				src/rander_bonus/randring_bonus.c\
 				src/rander_bonus/mini_map_bonus.c\
 				src/rander_bonus/mini_map_utils_bonus.c\
 				src/rander_bonus/handle_key_bonus.c\

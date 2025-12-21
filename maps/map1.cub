@@ -1,12 +1,11 @@
-C 0,0,0
-F 59,59,59
-
-
-
 WE assets/west.xpm
 NO assets/north.xpm
 SO assets/south.xpm
 EA assets/east.xpm
+
+
+C 0,0,0
+F 59,59,59
 
 111111111111111111111111111111111111
 110000000000000000000000000000000011

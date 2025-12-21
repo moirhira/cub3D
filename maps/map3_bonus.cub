@@ -1,7 +1,7 @@
-WE assets/lines.xpm
-NO assets/hands.xpm
-SO assets/eyes.xpm
-EA assets/head.xpm
+WE assets/west.xpm
+NO assets/north.xpm
+SO assets/south.xpm
+EA assets/east.xpm
 DO assets/door.xpm
 
 
