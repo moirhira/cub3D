@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:44:44 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 19:37:55 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/22 12:22:28 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_memory_alloc
 {

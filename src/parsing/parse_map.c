@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:06:42 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 19:39:07 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/22 16:31:08 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ char	**append_line(char **map, char *line, int rows)
 	int		i;
 
 	new_map = ft_malloc((rows + 2) * sizeof(char *));
-	if (!new_map)
-		return (printf("Error\nFrom malloc!\n"), NULL);
 	i = 0;
 	while (i < rows)
 	{

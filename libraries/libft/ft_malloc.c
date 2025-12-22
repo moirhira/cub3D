@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:13:38 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 22:24:54 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/22 12:21:13 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	*ft_malloc(size_t size)
 	allocated_mem = malloc(size);
 	if (!allocated_mem)
 	{
+		printf("Error\nFrom malloc\n");
 		free_all_memory();
 		exit(1);
 	}

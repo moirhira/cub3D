@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:04:41 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 19:38:19 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/22 12:57:56 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	validate_color_values(char **str, int *colors)
 		trimmed = ft_strtrim(str[i], " \t\n");
 		if (!is_all_digits(trimmed))
 		{
-			return (printf("Error\nColor value contains non-digit characters.\n"),
-				0);
+			printf("Error\nColor value contains non-digit characters.\n");
+			return (0);
 		}
 		colors[i] = ft_atoi(trimmed);
 		if (colors[i] < 0 || colors[i] > 255)

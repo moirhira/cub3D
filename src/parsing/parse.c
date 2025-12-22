@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:53:36 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 19:39:24 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/22 12:26:48 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	parse_configurations(t_game *game, int fd, char **f_line)
 	while (line != NULL)
 	{
 		trimmed = ft_strtrim(line, " \n\t");
-		if (!trimmed)
-			return (printf("Error\nMalloc failed\n"), 0);
 		if (parsed == 6)
 		{
 			*f_line = line;
@@ -58,15 +56,17 @@ int	parse(t_game *game, char *filedata)
 	if (fd == -1)
 		return (perror("Error\n"), 0);
 	if (is_dir(filedata))
-		return (printf("Error\nArgument is a derctory!\n"), close(fd), 0);
+	{
+		printf("Error\nArgument is a derctory!\n");
+		return (close(fd), 0);
+	}
 	f_line = NULL;
 	if (!parse_configurations(game, fd, &f_line))
 		return (close(fd), 0);
 	if (f_line && f_line[0] != '1' && f_line[0] != '\n')
 	{
 		printf("Error\nDuplicate configuration or invalid char!\n");
-		close(fd);
-		return (0);
+		return (close(fd), 0);
 	}
 	if (!parse_map(game, fd, f_line))
 		return (close(fd), 0);

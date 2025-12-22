@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:56:23 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 19:39:36 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/22 16:36:14 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ char	**fill_map_with_spaces(t_game *game)
 	while (i < game->map->height)
 	{
 		new_map[i] = ft_malloc((game->map->width + 1) * sizeof(char));
-		if (!new_map[i])
-		{
-			return (printf("Error\nMalloc failed\n"), NULL);
-		}
 		line_len = ft_strlen(game->map->map_arr[i]);
 		ft_memcpy(new_map[i], game->map->map_arr[i], line_len);
 		ft_memset(new_map[i] + line_len, ' ', game->map->width - line_len);

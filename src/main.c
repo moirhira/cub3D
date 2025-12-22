@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:51 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 22:40:30 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/22 17:16:41 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,7 @@ void	init_data(t_game *game)
 int	init_game(t_game **gamedata, char *file)
 {
 	*gamedata = ft_malloc(sizeof(t_game));
-	if (!*gamedata)
-		return (printf("Error\nmalloc\n"), 0);
 	(*gamedata)->map = ft_malloc(sizeof(t_map));
-	if (!(*gamedata)->map)
-		return (printf("Error\nmalloc\n"), 0);
 	init_data(*gamedata);
 	if (!parse(*gamedata, file))
 		return (0);
