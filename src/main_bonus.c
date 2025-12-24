@@ -6,11 +6,15 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 14:53:51 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 22:27:12 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/23 15:28:27 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+
+#define MAX_SCREEN_WIDTH 1920
+#define MAX_SCREEN_HEIGHT 1080
+#define SCALE_FACTOR 40
 
 void	init_data_helper(t_game *game)
 {
@@ -106,12 +110,12 @@ int	main(int ac, char **av)
 	if (!init_game(&game, av[1]))
 		return (close_and_free(game), 1);
 	camera(game);
-	game->scren_height = game->map->height * 40;
-	game->scren_width = game->map->width * 40;
-	if (game->scren_height > 1080)
-		game->scren_height = 1080;
-	if (game->scren_width > 1920)
-		game->scren_width = 1920;
+	game->scren_height = game->map->height * SCALE_FACTOR;
+	game->scren_width = game->map->width * SCALE_FACTOR;
+	if (game->scren_height > MAX_SCREEN_HEIGHT)
+		game->scren_height = MAX_SCREEN_HEIGHT;
+	if (game->scren_width > MAX_SCREEN_WIDTH)
+		game->scren_width = MAX_SCREEN_WIDTH;
 	if (init_randring(game) == 1)
 		return (close_and_free(game), 1);
 	return (0);

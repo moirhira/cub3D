@@ -6,7 +6,7 @@
 /*   By: moirhira <moirhira@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 22:02:41 by moirhira          #+#    #+#             */
-/*   Updated: 2025/12/21 14:01:26 by moirhira         ###   ########.fr       */
+/*   Updated: 2025/12/23 15:27:22 by moirhira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ static int	load_texture(t_game *game, int index)
 			&tex->width, &tex->height);
 	if (!tex->img_ptr)
 	{
-		{
-			printf("Error: Failed to load texture: %s\n",
-				game->tex_paths[index]);
-			return (0);
-		}
+		printf("Error: Failed to load texture: %s\n",
+			game->tex_paths[index]);
+		return (0);
 	}
 	tex->addr = mlx_get_data_addr(tex->img_ptr, &tex->bits_per_pixel,
 			&tex->size_line, &tex->endian);
